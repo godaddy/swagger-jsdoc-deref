@@ -60,5 +60,8 @@ typings/
 # next.js build output
 .next
 
+# CICD files
+.circleci/
+
 # Test Files
 test/
