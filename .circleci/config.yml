@@ -30,3 +30,8 @@ jobs:
 
       # run tests!
       - run: npm test
+
+      - run:
+          name: Upload Code Coverage
+          command: curl -s https://codecov.io/bash | bash
+          when: on_success
