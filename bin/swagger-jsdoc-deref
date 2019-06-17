@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+/* eslint no-console: 0, no-process-exit: 0 */
+const program = require('commander');
+const path = require('path');
+const { version } = require('../package.json');
+
+// Useful input.
+const input = process.argv.slice(2);
+// Default output
+let output = path.join(process.cwd(), 'swagger.json');
+
+program
+  .version(version)
+  .usage('[options]')
+  .option('-d, --definition <swaggerDef.js>', 'Input swagger definition')
+  .option('-o, --output [swaggerSpec.json]', 'Output swagger definition')
+  .parse(process.argv);
+
+// If no arguments provided, display help menu.
+if (!input.length) {
+  program.help();
+}
+
+// Require a definition file
+if (!program.definition) {
+  console.log('Definition file is required.');
+  console.log('You can do that, for example: ');
+  console.log(`$ swagger-jsdoc-deref -d swaggerDef.js ${input.join(' ')}`);
+  program.help();
+  process.exit(1);
+}
+
+// Override default output file if provided.
+if (program.output) {
+  // eslint-disable-next-line prefer-destructuring
+  output = program.output;
+}
+
+const source = require(path.join(process.cwd(), program.definition));
+
+require('..')({ source, output });
