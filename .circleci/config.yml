@@ -30,3 +30,8 @@ jobs:
 
       # run tests!
       - run: npm test
+
+      - run:
+          name: Upload Code Coverage
+          command: npm run report-coverage
+          when: on_success

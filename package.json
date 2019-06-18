@@ -7,7 +7,8 @@
     "lint": "eslint-godaddy *.js \"{bin,test}/**/*\"",
     "test": "nyc --reporter=text --reporter=json-summary npm run test:mocha",
     "test:mocha": "mocha \"test/**/*.test.js\"",
-    "posttest": "npm run lint"
+    "posttest": "npm run lint",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "bin": {
     "swagger-jsdoc-deref": "./bin/swagger-jsdoc-deref"
@@ -33,6 +34,7 @@
   "devDependencies": {
     "assume": "^2.2.0",
     "assume-sinon": "^1.0.1",
+    "codecov": "^3.5.0",
     "eslint": "^5.16.0",
     "eslint-config-godaddy": "^3.0.0",
     "eslint-plugin-json": "^1.4.0",
