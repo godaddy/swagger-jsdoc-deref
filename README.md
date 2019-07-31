@@ -1,7 +1,7 @@
 # swagger-jsdoc-deref
 
 [![CircleCI](https://circleci.com/gh/godaddy/swagger-jsdoc-deref.svg?style=svg)](https://circleci.com/gh/godaddy/swagger-jsdoc-deref)
-[![codecov](https://codecov.io/gh/godaddy/swagger-jsdoc-deref/branch/master/graph/badge.svg)](https://codecov.io/gh/godaddy/swagger-jsdoc-deref)
+[![codecov](https://codecov.io/gh/godaddy/swagger-jsdoc-deref/branch/master/graph/badge.svg)](https://codecov.io/gh/godaddy/swagger-jsdoc-deref) [![Greenkeeper badge](https://badges.greenkeeper.io/godaddy/swagger-jsdoc-deref.svg)](https://greenkeeper.io/)
 
 A CLI that uses [`swagger-jsdoc`] and [`json-refs`] to generate an
 OpenAPI/Swagger definition file from JSDoc-like comments, but allows for
