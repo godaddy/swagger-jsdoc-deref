@@ -42,7 +42,7 @@
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "proxyquire": "^2.1.0",
-    "sinon": "^7.3.2"
+    "sinon": "^8.0.0"
   },
   "dependencies": {
     "commander": "~3.0.0",
