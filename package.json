@@ -39,13 +39,13 @@
     "eslint-config-godaddy": "^4.0.0",
     "eslint-plugin-json": "^2.0.0",
     "eslint-plugin-mocha": "^6.0.0",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
+    "mocha": "^7.0.0",
+    "nyc": "^15.0.0",
     "proxyquire": "^2.1.0",
-    "sinon": "^7.3.2"
+    "sinon": "^8.0.4"
   },
   "dependencies": {
-    "commander": "~3.0.0",
+    "commander": "^4.1.0",
     "json-refs": "^3.0.13",
     "swagger-jsdoc": "^3.2.9"
   }
