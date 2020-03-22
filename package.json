@@ -47,6 +47,6 @@
   "dependencies": {
     "commander": "^4.1.0",
     "json-refs": "^3.0.13",
-    "swagger-jsdoc": "^3.2.9"
+    "swagger-jsdoc": "^4.0.0"
   }
 }
