@@ -45,7 +45,7 @@
     "sinon": "^9.0.0"
   },
   "dependencies": {
-    "commander": "^4.1.0",
+    "commander": "^5.1.0",
     "json-refs": "^3.0.13",
     "swagger-jsdoc": "^3.2.9"
   }
