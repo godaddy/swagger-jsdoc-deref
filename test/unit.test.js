@@ -27,7 +27,13 @@ describe('swagger-jsdoc-deref', function () {
   });
 
   it('calls swagger-jsdoc', async function () {
-    const source = { some: 'file' };
+    const source = {
+      some: 'file',
+      apis: [
+        'apifile1',
+        'apifile2'
+      ]
+    };
     const output = '/tmp/foo/bar.json';
     const rawSwagger = { another: 'thing' };
     const swaggerDoc = { finally: 'done' };

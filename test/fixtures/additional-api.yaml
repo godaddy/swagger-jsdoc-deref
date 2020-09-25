@@ -1,0 +1,22 @@
+openapi: '3.0.0'
+info:
+  title: Some additional API
+  version: '1.0.0'
+servers:
+  - url: additional.api.url
+paths:
+  /additional:
+    get:
+      description: Standard Page
+      responses:
+        '200':
+          $ref: '#/responses/Standard200'
+
+components:
+  responses:
+    Standard200:
+      description: OK
+      content:
+        text/html:
+          schema:
+            type: string

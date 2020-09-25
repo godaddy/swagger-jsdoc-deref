@@ -13,13 +13,15 @@ const exec = promisify(childProcess.exec);
 describe('e2e', function () {
   const outputFile = 'test/fixtures/output.json';
   const inputFile = 'test/fixtures/swagger.js';
+  const additionalFile = 'test/fixtures/additional-api.yaml';
   const outputPath = path.join(__dirname, 'fixtures', 'output.json');
-  const baseCommand = `${process.env.PWD}/bin/swagger-jsdoc-deref -o ${outputFile} -d ${inputFile}`;
+  const baseCommand = `${process.env.PWD}/bin/swagger-jsdoc-deref -o ${outputFile} ${additionalFile} -d ${inputFile}`;
 
   afterEach(async function () {
     await unlink(outputPath);
   });
 
+  /* eslint-disable max-statements */
   it('generates output', async function () {
     await exec(baseCommand, { cwd: process.env.PWD });
 
@@ -27,12 +29,19 @@ describe('e2e', function () {
 
     const rawFile = await readFile(outputPath, 'utf8');
     assume(rawFile).to.exist();
+
     const data = JSON.parse(rawFile);
     assume(data).to.exist();
     assume(data.paths).to.exist();
+
     const route = data.paths['/foo/{bar}'];
     assume(route).to.exist();
     assume(route.get).to.exist();
+
+    // Make sure additional apis are added
+    const additionalRoute = data.paths['/additional'];
+    assume(additionalRoute).to.exist();
+    assume(additionalRoute.get).to.exist();
 
     // Make sure parameters are dereferenced
     assume(route.get.parameters).to.have.length(1);
