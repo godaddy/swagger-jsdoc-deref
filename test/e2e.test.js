@@ -15,7 +15,7 @@ describe('e2e', function () {
   const inputFile = 'test/fixtures/swagger.js';
   const additionalFile = 'test/fixtures/additional-api.yaml';
   const outputPath = path.join(__dirname, 'fixtures', 'output.json');
-  const baseCommand = `${process.env.PWD}/bin/swagger-jsdoc-deref -o ${outputFile} ${additionalFile} -d ${inputFile}`;
+  const baseCommand = `${process.env.PWD}/bin/swagger-jsdoc-deref -o ${outputFile} -d ${inputFile}`;
 
   afterEach(async function () {
     await unlink(outputPath);
@@ -38,11 +38,6 @@ describe('e2e', function () {
     assume(route).to.exist();
     assume(route.get).to.exist();
 
-    // Make sure additional apis are added
-    const additionalRoute = data.paths['/additional'];
-    assume(additionalRoute).to.exist();
-    assume(additionalRoute.get).to.exist();
-
     // Make sure parameters are dereferenced
     assume(route.get.parameters).to.have.length(1);
     assume(route.get.parameters[0].description).to.equal('Type of bar');
@@ -51,5 +46,22 @@ describe('e2e', function () {
     assume(route.get.responses).to.exist();
     assume(route.get.responses['200']).to.exist();
     assume(route.get.responses['200'].description).to.equal('Here\'s the thing you wanted');
+  });
+
+  it('generates output w/ additional apis', async function () {
+    const baseCommandWithApis = `${baseCommand} ${additionalFile}`;
+    await exec(baseCommandWithApis, { cwd: process.env.PWD });
+
+    assume(await exists(outputPath)).to.be.true();
+
+    const rawFile = await readFile(outputPath, 'utf8');
+    assume(rawFile).to.exist();
+
+    const data = JSON.parse(rawFile);
+
+    // Make sure additional apis are added
+    const additionalRoute = data.paths['/additional'];
+    assume(additionalRoute).to.exist();
+    assume(additionalRoute.get).to.exist();
   });
 });
