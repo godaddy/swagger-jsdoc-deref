@@ -39,4 +39,10 @@ if (program.output) {
 
 const source = require(path.join(process.cwd(), program.definition));
 
+// Support optional api files
+if (program.args.length) {
+  const sourceApis = source.apis || [];
+  source.apis = sourceApis.concat(program.args);
+}
+
 require('..')({ source, output });
