@@ -4,7 +4,7 @@
   "description": "A CLI that uses swagger-jsdoc to generate Swagger definitions, but dereferences all json-refs for compatibility.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint-godaddy *.js \"{bin,test}/**/*.js\"",
+    "lint": "eslint-godaddy --ignore-pattern \"**/*.yaml\" *.js \"{bin,test}/**/*\"",
     "test": "nyc --reporter=text --reporter=json-summary npm run test:mocha",
     "test:mocha": "mocha \"test/**/*.test.js\"",
     "posttest": "npm run lint",
