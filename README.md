@@ -28,7 +28,25 @@ In your `package.json` file:
 ``` json
 {
   "scripts": {
-    "generate-docs": "swagger-jsdoc-deref -d ./path/to/definition/file.js -o ./other-path/"
+    "generate-docs": "swagger-jsdoc-deref -d ./path/to/definition/file.js -o ./other-path/output.json"
+  }
+}
+```
+
+### Additional API Snippets
+
+You can also provide additional API snippets from yaml files by providing additional file arguments:
+
+``` sh
+npx swagger-jsdoc-deref -d ./path/to/definition/file.js -o ./other-path/output.json ./path/to/api/snippet.yaml
+```
+
+In your `package.json` file:
+
+``` json
+{
+  "scripts": {
+    "generate-docs": "swagger-jsdoc-deref -d ./path/to/definition/file.js -o ./other-path/output.json ./path/to/api/snippet.yaml"
   }
 }
 ```

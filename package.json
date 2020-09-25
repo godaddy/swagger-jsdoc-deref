@@ -1,6 +1,6 @@
 {
   "name": "swagger-jsdoc-deref",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A CLI that uses swagger-jsdoc to generate Swagger definitions, but dereferences all json-refs for compatibility.",
   "main": "index.js",
   "scripts": {
