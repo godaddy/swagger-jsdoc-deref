@@ -31,6 +31,12 @@ if (!program.definition) {
   process.exit(1);
 }
 
+// Support optional api files
+if (program.args.length) {
+  sourceApis = source.apis || [];
+  source.apis = sourceApis.concat(program.args);
+}
+
 // Override default output file if provided.
 if (program.output) {
   // eslint-disable-next-line prefer-destructuring
