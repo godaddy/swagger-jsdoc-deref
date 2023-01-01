@@ -63,3 +63,4 @@ npm test
 
 [`swagger-jsdoc`]: https://www.npmjs.com/package/swagger-jsdoc
 [`json-refs`]: https://www.npmjs.com/package/json-refs
+test
