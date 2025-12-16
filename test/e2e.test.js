@@ -21,7 +21,6 @@ describe('e2e', function () {
     await unlink(outputPath);
   });
 
-  /* eslint-disable max-statements */
   it('generates output', async function () {
     await exec(baseCommand, { cwd: process.env.PWD });
 

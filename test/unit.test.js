@@ -47,8 +47,10 @@ describe('swagger-jsdoc-deref', function () {
     });
 
     assume(swaggerJsDoc).was.calledWithMatch({
-      ...source,
-      swaggerDefinition: source
+      definition: {
+        some: 'file'
+      },
+      apis: source.apis
     });
     assume(resolveRefs).was.calledWith(rawSwagger);
     assume(writeFile).was.calledWithMatch(output, JSON.stringify(swaggerDoc, null, 2));
