@@ -5,8 +5,14 @@ const jsonRefs = require('json-refs');
 const writeFile = promisify(fs.writeFile);
 
 module.exports = async function swaggerJsDocDeref({ source, output }) {
-  const options = { ...source, swaggerDefinition: source };
-  delete options.swaggerDefinition.apis;
+  // Extract apis from source if present
+  const { apis, ...definition } = source;
+
+  // Build options object for swagger-jsdoc v6.x
+  const options = {
+    definition,
+    apis: apis || []
+  };
 
   const rawSpec = swaggerDoc(options);
   const spec = await jsonRefs.resolveRefs(rawSpec);

@@ -1,5 +1,9 @@
 # `swagger-jsdoc-deref`
 
+### 1.1.1
+
+- [#30] Upgrade vulnerable version of `swagger-jsdoc`
+
 ### 1.1.0
 
 - [#21] Allow for including additional API Snippets via yaml file arguments
